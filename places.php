@@ -47,6 +47,11 @@ while ($row = mysqli_fetch_assoc($result)) {
             View Place
         </a>
 
+        <a href="select_place.php?id=<?php echo $row['id']; ?>" 
+         style="background:orange; color:white; padding:5px; text-decoration:none;">
+             Select
+        </a>
+
     </div>
 
 </div>

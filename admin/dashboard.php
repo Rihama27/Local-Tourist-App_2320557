@@ -12,7 +12,9 @@ if(isset($_GET['msg'])) {
     if($_GET['msg'] == "added") {
         echo "<script>alert('Place added successfully');</script>";
     }
-
+    if($_GET['msg'] == "updated") {
+        echo "<script>alert('Place updated successfully');</script>";
+    }
 }
 
 
@@ -36,6 +38,11 @@ $result = mysqli_query($conn, "SELECT * FROM places");
 
 <a href="add_place.php">Add Place</a>
 
+<a href="logout.php" 
+   style="background:black; color:white; padding:5px; text-decoration:none; margin-left:10px;">
+   Logout
+</a>
+
 <hr>
 
 <?php while($row = mysqli_fetch_assoc($result)) { ?>
@@ -49,6 +56,7 @@ $result = mysqli_query($conn, "SELECT * FROM places");
         <p><?php echo $row['distance']; ?></p>
 
         <a href="delete_place.php?id=<?php echo $row['id']; ?>" 
+                onclick="return confirm('Are you sure you want to delete this place?')"
            style="background:red; color:white; padding:5px;">
            Delete
         </a>
