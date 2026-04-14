@@ -141,10 +141,50 @@ if(isset($_GET['msg']) && $_GET['msg'] == "added"){
 
 <h1 class="page-title">Tourist Places</h1>
 
+<form method="GET" style="text-align:center; margin-bottom:20px;">
+
+    <input type="text" name="search"
+        placeholder="Search places..."
+        value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>"
+        style="padding:10px; width:200px; border-radius:8px; border:1px solid #ccc;">
+
+    <select name="category" style="padding:10px; border-radius:8px;">
+        <option value="all">All Categories</option>
+        <option value="beach">Beach</option>
+        <option value="Religious">Religious</option>
+        <option value="park">Park</option>
+        <option value="historical">Historical</option>
+        <option value="Landmark">Landmark</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Museum">Museum</option>
+    </select>
+
+    <button type="submit"
+        style="padding:10px 15px; background:orange; color:white; border:none; border-radius:8px;">
+        Search
+    </button>
+
+</form>
+
 <div class="container">
 
 <?php
-$sql = "SELECT * FROM places";
+// $sql = "SELECT * FROM places";
+// $result = mysqli_query($conn, $sql);
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+$sql = "SELECT * FROM places WHERE 1=1";
+
+if (!empty($search)) {
+    $sql .= " AND name LIKE '%$search%'";
+}
+
+if ($category != "all") {
+    $sql .= " AND category = '$category'";
+}
+
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
