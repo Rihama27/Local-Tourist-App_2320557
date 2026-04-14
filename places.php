@@ -1,7 +1,7 @@
 <?php
 include "config/db.php";
-if(isset($_GET['msg']) && $_GET['msg'] == "selected"){
-    echo "<script>alert('Place added to your plan');</script>";
+if(isset($_GET['msg']) && $_GET['msg'] == "added"){
+    echo "<script>alert('This place is selected');</script>";
 }
 ?>
 
@@ -122,22 +122,7 @@ if(isset($_GET['msg']) && $_GET['msg'] == "selected"){
         .select-btn:hover {
             background: #218838;
         }
-
-        .planner-btn {
-            display: inline-block;
-            padding: 8px 12px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-top: 8px;
-        }
-
-        .planner-btn:hover {
-            background: #2980b9;
-        }
-
+        
     </style>
 </head>
 
@@ -149,6 +134,8 @@ if(isset($_GET['msg']) && $_GET['msg'] == "selected"){
     <div>
         <a href="index.php">Home</a>
         <a href="places.php">Places</a>
+        <a href="planner.php">Planner</a>
+        <a href="about.php">About</a>
     </div>
 </div>
 
@@ -182,10 +169,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <a class="select-btn" href="select_place.php?id=<?php echo $row['id']; ?>">
             Select
         </a>
-
-        <a class="planner-btn" href="planner.php">
-            Go to Planner
-        </a>
+        
 
     </div>
 

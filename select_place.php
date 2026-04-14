@@ -1,16 +1,15 @@
 <?php
-session_start();
+include "config/db.php";
 
 $id = $_GET['id'];
 
-if(!isset($_SESSION['plan'])) {
-    $_SESSION['plan'] = [];
+// save into database (avoid duplicates)
+$check = mysqli_query($conn, "SELECT * FROM plans WHERE place_id=$id");
+
+if(mysqli_num_rows($check) == 0){
+    mysqli_query($conn, "INSERT INTO plans (place_id) VALUES ($id)");
 }
 
-$_SESSION['plan'][] = $id;
-$_SESSION['plan'] = array_unique($_SESSION['plan']);
-
-// redirect with message
-header("Location: places.php?msg=selected");
+header("Location: places.php?msg=added");
 exit();
 ?>

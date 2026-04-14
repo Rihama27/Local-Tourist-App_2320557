@@ -1,11 +1,10 @@
 <?php
-session_start();
+include "config/db.php";
 
 $id = $_GET['id'];
 
-if(($key = array_search($id, $_SESSION['plan'])) !== false){
-    unset($_SESSION['plan'][$key]);
-}
+// delete from database
+mysqli_query($conn, "DELETE FROM plans WHERE place_id=$id");
 
 header("Location: planner.php?msg=removed");
 exit();

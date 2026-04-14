@@ -15,7 +15,6 @@ session_start();
             background: linear-gradient(to right, #e0f7fa, #f1f8e9);
         }
 
-        /* NAVBAR */
         .nav{
             background: linear-gradient(90deg, #365563, #1e3a5f);
             padding: 15px 25px;
@@ -43,14 +42,12 @@ session_start();
             color: black;
         }
 
-        /* TITLE */
         .title{
             text-align:center;
             color:#365563;
             margin-top:20px;
         }
 
-        /* CARD */
         .card{
             background:white;
             max-width:800px;
@@ -105,23 +102,28 @@ session_start();
 if(isset($_GET['msg']) && $_GET['msg'] == "removed"){
     echo "<script>alert('Place removed successfully');</script>";
 }
-
-// CHECK SESSION
-if(!isset($_SESSION['plan']) || count($_SESSION['plan']) == 0){
-    echo "<p style='text-align:center;'>No places selected.</p>";
-    exit();
+if(isset($_GET['msg']) && $_GET['msg'] == "added"){
+    echo "<script>alert('Place added successfully');</script>";
 }
 
-$ids = implode(",", $_SESSION['plan']);
-$result = mysqli_query($conn, "SELECT * FROM places WHERE id IN ($ids)");
+// DATABASE FETCH
+$sql = "SELECT places.* 
+        FROM plans 
+        JOIN places ON plans.place_id = places.id";
 
-while($row = mysqli_fetch_assoc($result)){
+$result = mysqli_query($conn, $sql);
+
+// EMPTY CHECK
+if(mysqli_num_rows($result) == 0){
+    echo "<p style='text-align:center;'>No places selected.</p>";
+}
 ?>
 
-<!-- CARD -->
+<?php while($row = mysqli_fetch_assoc($result)){ ?>
+
 <div class="card">
 
-    <img src="assets/images/<?php echo $row['image']; ?>" style ="width:100% ; height:200px; object-fit:cover;">
+    <img src="assets/images/<?php echo $row['image']; ?>">
 
     <div class="card-content">
 
