@@ -10,17 +10,146 @@ if(isset($_GET['msg']) && $_GET['msg'] == "selected"){
 <head>
     <title>Tourist Places</title>
 
-    <!-- CSS LINK -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6f9;
+        }
+
+        /* HEADER NAV */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2c3e50;
+            padding: 15px 20px;
+            color: white;
+        }
+
+        .nav h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .nav a:hover {
+            color: orange;
+        }
+
+        /* TITLE */
+        .page-title {
+            text-align: center;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+
+        /* GRID */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .small-text {
+            font-size: 13px;
+            color: gray;
+            margin: 5px 0 10px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background: orange;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .btn:hover {
+            background: darkorange;
+        }
+
+        .select-btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .select-btn:hover {
+            background: #218838;
+        }
+
+        .planner-btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .planner-btn:hover {
+            background: #2980b9;
+        }
+
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR (simple example) -->
+<!-- NAVBAR -->
 <div class="nav">
     <h2>Local Tourist Day Visit Planner</h2>
-    <a href="index.php">Home</a>
-    <a href="places.php">Places</a>
+    <div>
+        <a href="index.php">Home</a>
+        <a href="places.php">Places</a>
+    </div>
 </div>
 
 <h1 class="page-title">Tourist Places</h1>
@@ -50,14 +179,14 @@ while ($row = mysqli_fetch_assoc($result)) {
             View Place
         </a>
 
-        <a href="select_place.php?id=<?php echo $row['id']; ?>" 
-         style="background:orange; color:white; padding:5px; text-decoration:none;">
-             Select
+        <a class="select-btn" href="select_place.php?id=<?php echo $row['id']; ?>">
+            Select
         </a>
-        <a href="planner.php" 
-        style="background:green; color:white; padding:8px; text-decoration:none;">
+
+        <a class="planner-btn" href="planner.php">
             Go to Planner
         </a>
+
     </div>
 
 </div>
