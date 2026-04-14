@@ -85,10 +85,29 @@ if(isset($_POST['login'])) {
             color: #ff4d4d;
             margin-top: 10px;
         }
+        /* HOME BUTTON */
+        .home-btn{
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: orange;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover{
+            background: orange;
+            color: black;
+        }
     </style>
 </head>
 
 <body>
+    <a href="../index.php" class="home-btn">Home</a>
 
 <div class="login-box">
     <h2>Admin Login</h2>
