@@ -1,5 +1,8 @@
 <?php
 include "config/db.php";
+if(isset($_GET['msg']) && $_GET['msg'] == "selected"){
+    echo "<script>alert('Place added to your plan');</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +54,10 @@ while ($row = mysqli_fetch_assoc($result)) {
          style="background:orange; color:white; padding:5px; text-decoration:none;">
              Select
         </a>
-
+        <a href="planner.php" 
+        style="background:green; color:white; padding:8px; text-decoration:none;">
+            Go to Planner
+        </a>
     </div>
 
 </div>
