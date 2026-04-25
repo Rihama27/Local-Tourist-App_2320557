@@ -97,7 +97,7 @@
 <body>
 
 <div class="nav">
-    <h2>Tourist Planner</h2>
+    <h2>Local Tourist Day-Visit Planner</h2>
     <div>
         <a href="index.php">Home</a>
         <a href="places.php">Places</a>

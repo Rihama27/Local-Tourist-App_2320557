@@ -130,7 +130,7 @@ if(isset($_GET['msg']) && $_GET['msg'] == "added"){
 
 <!-- NAVBAR -->
 <div class="nav">
-    <h2>Local Tourist Day Visit Planner</h2>
+    <h2>Local Tourist Day-Visit Planner</h2>
     <div>
         <a href="index.php">Home</a>
         <a href="places.php">Places</a>

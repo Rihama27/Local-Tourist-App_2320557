@@ -117,7 +117,7 @@ nav {
 <body>
 
 <header>
-    <h2>Local Tourist Day Visit Planner</h2>
+    <h2>Local Tourist Day-Visit Planner</h2>
 </header>
 
 <!-- <nav>
