@@ -14,6 +14,8 @@ $row = mysqli_fetch_assoc($result);
 <head>
     <title><?php echo $row['name']; ?></title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
             margin: 0;
@@ -103,6 +105,30 @@ $row = mysqli_fetch_assoc($result);
             background: darkorange;
         }
 
+        footer {
+    background: #1a252f;
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 13px;
+    width: 100%;
+}
+
+.footer-icons {
+    margin-top: 5px;
+}
+
+.footer-icons a {
+    color: orange;
+    margin: 0 8px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.footer-icons a:hover {
+    color: white;
+}
+
     </style>
 </head>
 
@@ -137,6 +163,8 @@ $row = mysqli_fetch_assoc($result);
     <a href="places.php" class="btn">← Back to Places</a>
 
 </div>
+
+<?php include "footer.php"; ?>
 
 </body>
 </html>
